@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:reg="http://www.dangdang.com/schema/ddframe/reg"
+       xmlns:job="http://www.dangdang.com/schema/ddframe/job"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.dangdang.com/schema/ddframe/reg
+       http://www.dangdang.com/schema/ddframe/reg/reg.xsd
+       http://www.dangdang.com/schema/ddframe/job
+       http://www.dangdang.com/schema/ddframe/job/job.xsd">
+
+    <bean id="registryCenter" class="com.dangdang.ddframe.reg.zookeeper.ZookeeperRegistryCenter" init-method="init"
+          destroy-method="close">
+        <constructor-arg>
+            <bean class="com.dangdang.ddframe.reg.zookeeper.ZookeeperConfiguration">
+                <property name="serverLists" value="192.168.11.118:2181,192.168.11.118:2182,192.168.11.118:2183"/>
+                <property name="namespace" value="test_task"/>
+                <property name="baseSleepTimeMilliseconds" value="1000"/>
+                <property name="maxSleepTimeMilliseconds" value="3000"/>
+                <property name="maxRetries" value="3"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+    <job:simple id="mytest" class="com.ikissart.task.test.MyTest"
+                registry-center-ref="registryCenter" cron="0/30 * * * * ?"
+                sharding-total-count="1" misfire="false"/>
+</beans>

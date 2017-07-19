@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>mytask</groupId>
+  <artifactId>mytasktest</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>mytasktest Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+    
+      <dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>3.2.2.RELEASE</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+  <!-- elastic-job start -->
+		<dependency>
+		    <groupId>com.dangdang</groupId>
+		    <artifactId>elastic-job-core</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.dangdang</groupId>
+		    <artifactId>elastic-job-spring</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		<!-- elastic-job end -->
+		
+			<dependency>
+		    <groupId>com.squareup.okhttp3</groupId>
+		    <artifactId>okhttp</artifactId>
+		    <version>3.4.1</version>
+		</dependency>
+		<!-- okhttp end -->
+    
+    
+  </dependencies>
+  <build>
+    <finalName>mytasktest</finalName>
+  </build>
+</project>
